@@ -12,7 +12,9 @@ async function bootstrap() {
 
   // Enable CORS
   app.enableCors({
-  origin: ['https://69f01d85b3c66000076517d6--date-monitor-frontend.netlify.app'],
+  origin: [
+    'https://date-monitor-frontend.netlify.app',
+    'https://69f01d85b3c66000076517d6--date-monitor-frontend.netlify.app'],
   credentials: true,
 });
 
