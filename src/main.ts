@@ -33,10 +33,14 @@ async function bootstrap() {
   // Set API prefix
   app.setGlobalPrefix('api');
 
-  // const port = process.env.PORT || 3001;
-  const port =  process.env.PORT || 8080;
-  console.log('port:', port)
-  await app.listen(port, '0.0.0.0');
+  const port = parseInt(process.env.PORT || '8080', 10);
+  const host = process.env.HOST || '0.0.0.0';
+  console.log('NODE_ENV:', process.env.NODE_ENV);
+  console.log('PORT:', process.env.PORT);
+  console.log('HOST:', host);
+  console.log('listen on:', host, port);
+
+  await app.listen(port, host);
   console.log(`Application is running on: ${await app.getUrl()}`);
 }
 
