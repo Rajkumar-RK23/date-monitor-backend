@@ -22,7 +22,7 @@ import { ConfigModule } from '@nestjs/config'; // ✅ import this
       database: process.env.DB_DATABASE || 'railway',
       autoLoadEntities: true,
       synchronize: false,
-      logging: process.env.NODE_ENV === 'development',
+      logging: true,
     }),
 
     AuthModule,
