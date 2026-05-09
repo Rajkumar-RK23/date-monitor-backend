@@ -15,10 +15,10 @@ import { ConfigModule } from '@nestjs/config'; // ✅ import this
     }),
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: process.env.DB_HOST || 'mysql.railway.internal',
-      port: parseInt(process.env.DB_PORT || '3306'),
+      host: process.env.DB_HOST || 'turntable.proxy.rlwy.net',
+      port: parseInt(process.env.DB_PORT || '29943'),
       username: process.env.DB_USERNAME || 'root',
-      password: process.env.DB_PASSWORD || 'root',
+      password: process.env.DB_PASSWORD || 'sUjUoSIHSAsLOWyEKLYQArUWsxkIXwrW',
       database: process.env.DB_DATABASE || 'railway',
       autoLoadEntities: true,
       synchronize: false,
