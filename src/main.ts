@@ -11,7 +11,15 @@ async function bootstrap() {
   });
 
   // Enable CORS
-  app.enableCors();
+  app.enableCors({
+    origin: [
+      'http://localhost:4200',
+      'https://date-monitor-frontend.netlify.app',
+      'https://69f01d85b3c66000076517d6--date-monitor-frontend.netlify.app'
+    ],
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+    credentials: true,
+  });
 
   // Enable global validation pipe
   app.useGlobalPipes(
@@ -26,7 +34,7 @@ async function bootstrap() {
   app.setGlobalPrefix('api');
 
   // const port = process.env.PORT || 3001;
-  const port =  process.env.PORT || 3000;
+  const port =  process.env.PORT || 8080;
   console.log('port:', port)
   await app.listen(port);
   console.log(`Application is running on: http://localhost:${port}/api`);
