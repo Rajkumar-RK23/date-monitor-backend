@@ -11,7 +11,10 @@ async function bootstrap() {
   });
 
   // Enable CORS
-  app.enableCors();
+  app.enableCors({
+  origin: ['https://69f01d85b3c66000076517d6--date-monitor-frontend.netlify.app'],
+  credentials: true,
+});
 
   // Enable global validation pipe
   app.useGlobalPipes(
@@ -26,7 +29,7 @@ async function bootstrap() {
   app.setGlobalPrefix('api');
 
   // const port = process.env.PORT || 3001;
-  const port = 3001;
+  const port =  process.env.PORT || 3000;
   console.log('port:', port)
   await app.listen(port);
   console.log(`Application is running on: http://localhost:${port}/api`);
