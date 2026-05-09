@@ -11,14 +11,25 @@ async function bootstrap() {
   });
 
   // Enable CORS
+  const allowedOrigins = [
+    'http://localhost:4200',
+    'https://date-monitor-frontend.netlify.app',
+    'https://69f01d85b3c66000076517d6--date-monitor-frontend.netlify.app',
+  ];
+
   app.enableCors({
-    origin: [
-      'http://localhost:4200',
-      'https://date-monitor-frontend.netlify.app',
-      'https://69f01d85b3c66000076517d6--date-monitor-frontend.netlify.app'
-    ],
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error(`CORS blocked origin: ${origin}`));
+      }
+    },
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+    allowedHeaders: 'Content-Type,Authorization',
     credentials: true,
+    preflightContinue: false,
+    optionsSuccessStatus: 204,
   });
 
   // Enable global validation pipe
