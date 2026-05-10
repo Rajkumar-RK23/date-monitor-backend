@@ -13,6 +13,7 @@ async function bootstrap() {
   // Enable CORS
   const allowedOrigins = [
     'http://localhost:4200',
+    'http://localhost:55082',
     'https://date-monitor-frontend.netlify.app',
     'https://69f01d85b3c66000076517d6--date-monitor-frontend.netlify.app',
   ];
