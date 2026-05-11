@@ -20,14 +20,16 @@ async function bootstrap() {
 
   app.enableCors({
     origin: (origin, callback) => {
+      console.log('CORS request origin:', origin);
       if (!origin || allowedOrigins.includes(origin)) {
         callback(null, true);
       } else {
-        callback(new Error(`CORS blocked origin: ${origin}`));
+        callback(null, false);
       }
     },
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
-    allowedHeaders: 'Content-Type,Authorization',
+    methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'Origin', 'Accept'],
+    exposedHeaders: ['Authorization'],
     credentials: true,
     preflightContinue: false,
     optionsSuccessStatus: 204,
